@@ -95,6 +95,7 @@ h1,h2,h3,h4{
 .header-inner{
   max-width:var(--maxw);margin:0 auto;padding:14px 24px;
   display:flex;align-items:center;gap:24px;
+  position:relative;
 }
 .brand{display:flex;align-items:center;gap:12px;flex-shrink:0;}
 .brand-mark{
@@ -119,6 +120,12 @@ h1,h2,h3,h4{
 }
 .site-nav a:hover{background:var(--cream-deep);color:var(--blue-900);}
 .site-nav a.active{background:var(--blue-900);color:var(--buff);}
+.nav-toggle{
+  display:none;
+  background:var(--blue-900);color:var(--buff);border:none;
+  width:42px;height:38px;border-radius:8px;font-size:1.2rem;cursor:pointer;
+  flex-shrink:0;align-items:center;justify-content:center;
+}
 .member-btn{
   flex-shrink:0;
   background:var(--buff);color:var(--blue-900);border:none;
@@ -345,7 +352,18 @@ details.faq p{margin:12px 0 0;color:var(--ink-soft);}
   .hero-photo{max-width:420px;}
 }
 @media(max-width:760px){
-  .header-inner{flex-wrap:wrap;}
-  .site-nav{order:3;width:100%;border-top:1px dashed var(--line);padding-top:8px;}
+  .nav-toggle{display:flex;}
+  .header-inner{flex-wrap:nowrap;}
+  .site-nav{
+    display:none;
+    position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;gap:0;
+    background:var(--cream);border-bottom:3px solid var(--blue-900);
+    padding:10px 24px 18px;overflow-x:visible;
+    box-shadow:var(--shadow);
+  }
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:12px 6px;border-radius:0;border-bottom:1px dashed var(--line);width:100%;}
+  .site-nav a:last-child{border-bottom:none;}
   table{min-width:560px;}
 }

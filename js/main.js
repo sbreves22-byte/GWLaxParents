@@ -5,6 +5,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (a.getAttribute('href') === here) a.classList.add('active');
   });
 
+  // Mobile hamburger nav toggle
+  const toggle = document.getElementById('navToggle');
+  const nav = document.querySelector('.site-nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+    // Close the menu after a link is tapped
+    nav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => nav.classList.remove('open'));
+    });
+  }
+
   // Animate any progress rings on the page: <div class="ring" data-pct="62">
   document.querySelectorAll('.ring').forEach(ring => {
     const pct = Math.min(100, Math.max(0, parseFloat(ring.dataset.pct || '0')));
